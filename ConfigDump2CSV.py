@@ -3,7 +3,7 @@
 __author__    = "Oliver Schlueter"
 __copyright__ = "Copyright 2021, Dell Technologies"
 __license__   = "GPL"
-__version__   = "1.0.0"
+__version__   = "1.0.2"
 __email__     = "oliver.schlueter@dell.com"
 __status__    = "Production"
 
@@ -24,11 +24,7 @@ import datetime
 ###########################################
 #        VARIABLE
 ###########################################
-DEBUG = True
-
-module_arg = {
-                'file': '--file'
-    }
+DEBUG = False
 
 ###########################################
 #    Methods
@@ -140,7 +136,7 @@ class Vplex():
                     
             if module=="disks" or module=="all":
                 # disks
-                print("extent name, extens size, used")
+                print("disk name, extens size, used")
                 for disk in configDump["disks"]["disk"]:
                     print(disk["@name"] + "," + disk["@size"] + "," + disk["@use"] + ",")
                 
@@ -162,7 +158,7 @@ def main(argv=None):
 
     # display arguments if DEBUG enabled
     if DEBUG:
-        print("file: "+file)
+        print("file: " + file)
     else:
         sys.tracebacklimit = 0
 
